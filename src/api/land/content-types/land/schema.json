@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lands",
+  "info": {
+    "singularName": "land",
+    "pluralName": "lands",
+    "displayName": "Land"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "landTitle": {
+      "type": "string"
+    },
+    "stateOfOrigin": {
+      "type": "richtext"
+    }
+  }
+}
