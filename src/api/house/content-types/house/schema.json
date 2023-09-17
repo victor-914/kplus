@@ -4,7 +4,8 @@
   "info": {
     "singularName": "house",
     "pluralName": "houses",
-    "displayName": "house"
+    "displayName": "house",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,8 +18,8 @@
     "status": {
       "type": "enumeration",
       "enum": [
-        "SALE",
-        "BUY"
+        "FOR SALE",
+        "FOR RENT"
       ]
     },
     "state": {
@@ -40,20 +41,27 @@
       "type": "biginteger"
     },
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "streetName": {
       "type": "string"
     },
     "city": {
       "type": "string"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longititude": {
+      "type": "decimal"
     }
   }
 }
