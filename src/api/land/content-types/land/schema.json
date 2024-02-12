@@ -39,7 +39,7 @@
     "landSize": {
       "type": "biginteger"
     },
-    "images": {
+    "image": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -55,6 +55,27 @@
     },
     "longititude": {
       "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "land"
+    },
+    "videoUrl_2": {
+      "type": "string"
+    },
+    "videoUrl_3": {
+      "type": "string"
+    },
+    "cloudinary_image": {
+      "type": "string"
     }
   }
 }

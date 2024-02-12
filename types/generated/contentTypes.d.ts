@@ -361,6 +361,135 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHouseHouse extends Schema.CollectionType {
+  collectionName: 'houses';
+  info: {
+    singularName: 'house';
+    pluralName: 'houses';
+    displayName: 'house';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    price: Attribute.BigInteger;
+    status: Attribute.Enumeration<['FOR SALE', 'FOR RENT']>;
+    state: Attribute.String;
+    LGA: Attribute.String;
+    landmark: Attribute.String;
+    title: Attribute.String;
+    bedroom: Attribute.BigInteger;
+    bathroom: Attribute.BigInteger;
+    image: Attribute.Media;
+    streetName: Attribute.String;
+    city: Attribute.String;
+    latitude: Attribute.Decimal;
+    longititude: Attribute.Decimal;
+    description: Attribute.RichText;
+    videoUrl: Attribute.String;
+    user: Attribute.Relation<
+      'api::house.house',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    videoUrl_2: Attribute.String;
+    videoUrl_3: Attribute.String;
+    cloudinary_image: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::house.house',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::house.house',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLandLand extends Schema.CollectionType {
+  collectionName: 'lands';
+  info: {
+    singularName: 'land';
+    pluralName: 'lands';
+    displayName: 'Land';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    price: Attribute.BigInteger;
+    state: Attribute.String;
+    LGA: Attribute.String;
+    landmark: Attribute.String;
+    city: Attribute.String;
+    streetName: Attribute.String;
+    CofO: Attribute.Boolean;
+    landSize: Attribute.BigInteger;
+    image: Attribute.Media;
+    latitude: Attribute.Decimal;
+    longititude: Attribute.Decimal;
+    description: Attribute.Text;
+    videoUrl: Attribute.String;
+    users_permissions_users: Attribute.Relation<
+      'api::land.land',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    videoUrl_2: Attribute.String;
+    videoUrl_3: Attribute.String;
+    cloudinary_image: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -630,7 +759,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -659,6 +787,24 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    houses: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::house.house'
+    >;
+    land: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToOne',
+      'api::land.land'
+    >;
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    address: Attribute.String;
+    isTermsAppliedAgreed: Attribute.Boolean;
+    phoneNumber: Attribute.BigInteger;
+    phoneNumber2: Attribute.BigInteger;
+    city: Attribute.String;
+    state: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -672,83 +818,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHouseHouse extends Schema.CollectionType {
-  collectionName: 'houses';
-  info: {
-    singularName: 'house';
-    pluralName: 'houses';
-    displayName: 'house';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    price: Attribute.BigInteger;
-    status: Attribute.Enumeration<['FOR SALE', 'FOR RENT']>;
-    state: Attribute.String;
-    LGA: Attribute.String;
-    landmark: Attribute.String;
-    title: Attribute.String;
-    bedroom: Attribute.BigInteger;
-    bathroom: Attribute.BigInteger;
-    images: Attribute.Media;
-    streetName: Attribute.String;
-    city: Attribute.String;
-    latitude: Attribute.Decimal;
-    longititude: Attribute.Decimal;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::house.house',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::house.house',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLandLand extends Schema.CollectionType {
-  collectionName: 'lands';
-  info: {
-    singularName: 'land';
-    pluralName: 'lands';
-    displayName: 'Land';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    price: Attribute.BigInteger;
-    state: Attribute.String;
-    LGA: Attribute.String;
-    landmark: Attribute.String;
-    city: Attribute.String;
-    streetName: Attribute.String;
-    CofO: Attribute.Boolean;
-    landSize: Attribute.BigInteger;
-    images: Attribute.Media;
-    latitude: Attribute.Decimal;
-    longititude: Attribute.Decimal;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::land.land', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -763,14 +832,15 @@ declare module '@strapi/strapi' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::house.house': ApiHouseHouse;
+      'api::land.land': ApiLandLand;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::house.house': ApiHouseHouse;
-      'api::land.land': ApiLandLand;
     }
   }
 }

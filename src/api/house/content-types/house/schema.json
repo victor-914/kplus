@@ -40,9 +40,9 @@
     "bathroom": {
       "type": "biginteger"
     },
-    "images": {
+    "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -62,6 +62,27 @@
     },
     "longititude": {
       "type": "decimal"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "houses"
+    },
+    "videoUrl_2": {
+      "type": "string"
+    },
+    "videoUrl_3": {
+      "type": "string"
+    },
+    "cloudinary_image": {
+      "type": "string"
     }
   }
 }
