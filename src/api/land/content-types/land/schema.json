@@ -41,7 +41,7 @@
     },
     "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -50,32 +50,31 @@
         "audios"
       ]
     },
-    "latitude": {
-      "type": "decimal"
-    },
-    "longititude": {
-      "type": "decimal"
-    },
-    "description": {
-      "type": "text"
-    },
     "videoUrl": {
-      "type": "string"
-    },
-    "users_permissions_users": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "land"
-    },
-    "videoUrl_2": {
-      "type": "string"
-    },
-    "videoUrl_3": {
       "type": "string"
     },
     "cloudinary_image": {
       "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "lands"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

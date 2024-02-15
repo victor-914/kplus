@@ -416,18 +416,15 @@ export interface ApiHouseHouse extends Schema.CollectionType {
     image: Attribute.Media;
     streetName: Attribute.String;
     city: Attribute.String;
-    latitude: Attribute.Decimal;
-    longititude: Attribute.Decimal;
     description: Attribute.RichText;
     videoUrl: Attribute.String;
+    cloudinary_image: Attribute.String;
+    video: Attribute.Media;
     user: Attribute.Relation<
       'api::house.house',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    videoUrl_2: Attribute.String;
-    videoUrl_3: Attribute.String;
-    cloudinary_image: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -468,18 +465,15 @@ export interface ApiLandLand extends Schema.CollectionType {
     CofO: Attribute.Boolean;
     landSize: Attribute.BigInteger;
     image: Attribute.Media;
-    latitude: Attribute.Decimal;
-    longititude: Attribute.Decimal;
-    description: Attribute.Text;
     videoUrl: Attribute.String;
-    users_permissions_users: Attribute.Relation<
+    cloudinary_image: Attribute.String;
+    video: Attribute.Media;
+    user: Attribute.Relation<
       'api::land.land',
-      'oneToMany',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
-    videoUrl_2: Attribute.String;
-    videoUrl_3: Attribute.String;
-    cloudinary_image: Attribute.String;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -792,13 +786,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::house.house'
     >;
-    land: Attribute.Relation<
+    lands: Attribute.Relation<
       'plugin::users-permissions.user',
-      'manyToOne',
+      'oneToMany',
       'api::land.land'
     >;
-    firstname: Attribute.String;
-    lastname: Attribute.String;
     address: Attribute.String;
     isTermsAppliedAgreed: Attribute.Boolean;
     phoneNumber: Attribute.BigInteger;
