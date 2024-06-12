@@ -425,6 +425,7 @@ export interface ApiHouseHouse extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    titleDocument: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -474,6 +475,7 @@ export interface ApiLandLand extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     description: Attribute.RichText;
+    titleDocument: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
