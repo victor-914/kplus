@@ -85,6 +85,18 @@
     },
     "titleDocument": {
       "type": "string"
+    },
+    "catergory": {
+      "type": "enumeration",
+      "enum": [
+        "Rentals",
+        "Sales",
+        "Shortlet",
+        "Offices",
+        "Villas",
+        "Apartments",
+        "featured"
+      ]
     }
   }
 }
